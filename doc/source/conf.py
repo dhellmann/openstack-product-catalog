@@ -22,27 +22,20 @@ sys.path.insert(0, os.path.abspath('../..'))
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = [
-    'sphinx.ext.autodoc',
+    'sphinx.ext.extlinks',
     #'sphinx.ext.intersphinx',
     'oslosphinx',
-    'yasfb',
 ]
 
-# Feed configuration for yasfb
-feed_base_url = 'http://specs.openstack.org/openstack/product-catalog'
-feed_author = 'OpenStack Development Team'
+extlinks = {
+    'repo': ('http://git.openstack.org/cgit/%s', ''),
+    'team': ('http://governance.openstack.org/reference/projects/%s.html', ''),
+}
 
 exclude_patterns = [
     'template.rst',
+    'tag-template.rst',
 ]
-
-# Optionally allow the use of sphinxcontrib.spelling to verify the
-# spelling of the documents.
-try:
-    import sphinxcontrib.spelling
-    extensions.append('sphinxcontrib.spelling')
-except ImportError:
-    pass
 
 # autodoc generation is a bit aggressive and a nuisance when doing heavy
 # text edit cycles.
@@ -55,7 +48,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'product-catalog'
+project = u'OpenStack Product Catalog'
 copyright = u'%s, OpenStack Foundation' % datetime.date.today().year
 
 # If true, '()' will be appended to :func: etc. cross-reference text.

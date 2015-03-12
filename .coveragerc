@@ -1,0 +1,7 @@
+[run]
+branch = True
+source = product-catalog
+omit = product-catalog/tests/*,product-catalog/openstack/*
+
+[report]
+ignore-errors = True
